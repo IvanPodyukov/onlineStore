@@ -1,0 +1,37 @@
+.edit-profile-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+.edit-profile-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.save-button {
+    background-color: #00a0b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    background-color: #007c8c;
+}
+
+.back-link {
+    text-decoration: none;
+    color: #00a0b0;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.back-link:hover {
+    color: #007c8c;
+}

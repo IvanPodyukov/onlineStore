@@ -1,0 +1,50 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Товары
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/products.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Товары</h1>
+    <ul class="product-list">
+        {% for product in page_obj %}
+            <li class="product-item">
+                <div>
+                    <p class="product-name">Название: <a href="{% url 'shop:product_details' product.pk %}">{{ product.name }}</a></p>
+                    <p class="product-description">Описание: {{ product.description }}</p>
+                    <p class="product-price">Цена: {{ product.price }}$</p>
+                    {% if request.user.is_authenticated and product.user != request.user %}
+                        <p><a href="{% url 'shop:add_product_to_cart' product.pk %}" class="cart-action">Добавить в корзину</a></p>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="page-link">&laquo; первая</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">предыдущая</a>
+            {% endif %}
+
+            <span class="current">
+                Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">следующая</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">последняя &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <div>
+        {% if request.user.is_authenticated %}
+            <p><a href="{% url 'shop:create_product' %}" class="create-product-link">Создать товар</a></p>
+        {% endif %}
+    </div>
+{% endblock %}

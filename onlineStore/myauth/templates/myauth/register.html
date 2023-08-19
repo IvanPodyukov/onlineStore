@@ -1,0 +1,23 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Регистрация
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/register.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>
+        Регистрация
+    </h1>
+    <div class="registration-form">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Зарегистрироваться" class="register-button">
+        </form>
+    </div>
+{% endblock %}

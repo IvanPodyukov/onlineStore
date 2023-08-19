@@ -1,0 +1,59 @@
+.product-list {
+    list-style: none;
+    padding: 0;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+}
+
+.product-name a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.product-description {
+    color: #666;
+    margin: 5px 0;
+}
+
+.product-price {
+    font-weight: bold;
+    color: #00a0b0;
+    margin-bottom: 10px;
+}
+
+/* Стили для пагинации */
+.pagination {
+    margin-top: 20px;
+}
+
+.page-link {
+    text-decoration: none;
+    color: #333;
+    margin: 0 5px;
+}
+
+/* Стили для ссылки создания товара */
+.create-product-link {
+    text-decoration: none;
+    color: #00a0b0;
+    font-weight: bold;
+}
+
+/* Стили для кнопок корзины */
+.cart-action {
+    text-decoration: none;
+    color: #00a0b0;
+    font-weight: bold;
+}
+
+/* Стили для текущей страницы в пагинации */
+.current {
+    font-weight: bold;
+    color: #00a0b0;
+}

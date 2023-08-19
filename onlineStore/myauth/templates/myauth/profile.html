@@ -1,0 +1,32 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Профиль пользователя {{ user.username }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/profile.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Профиль пользователя {{ user.username }}</h1>
+    <div class="user-profile">
+        <p class="profile-label">Никнейм:</p>
+        <p class="profile-info">{{ user.username }}</p>
+        <p class="profile-label">Имя:</p>
+        <p class="profile-info">{{ user.first_name }}</p>
+        <p class="profile-label">Фамилия:</p>
+        <p class="profile-info">{{ user.last_name }}</p>
+        <p class="profile-label">Email:</p>
+        <p class="profile-info">{{ user.email }}</p>
+    </div>
+    {% if user == request.user %}
+        <p><a href="{% url 'myauth:edit' user.id %}" class="profile-action">Редактировать данные</a></p>
+        <p><a href="{% url 'myauth:change_password' user.id %}" class="profile-action">Сменить пароль</a></p>
+        <p><a href="{% url 'myauth:delete' user.id %}" class="profile-action">Удалить аккаунт</a></p>
+        <p><a href="{% url 'myauth:exit' %}" class="profile-action">Выйти из аккаунта</a></p>
+    {% else %}
+        <p><a href="{% url 'myauth:chat' user.id %}" class="profile-action">Написать сообщение</a></p>
+    {% endif %}
+{% endblock %}

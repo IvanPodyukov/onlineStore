@@ -1,0 +1,43 @@
+/* Стили для страницы корзины */
+.page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-list {
+    list-style: none;
+    padding: 0;
+}
+
+.product-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.product-name a {
+    text-decoration: none;
+    color: #333;
+}
+
+.product-price {
+    font-weight: bold;
+    color: black;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.empty-cart {
+    font-size: 18px;
+    color: #ff6347;
+}
+
+.cart-action {
+    text-decoration: none;
+    color: #00a0b0;
+    font-weight: bold;
+}

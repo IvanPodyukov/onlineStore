@@ -1,0 +1,34 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Товар {{ product.name }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/product_detail.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Товар {{ product.name }}</h1>
+    <div class="product-details">
+        <p class="product-name">Название: {{ product.name }}</p>
+        <p class="product-description">Описание: {{ product.description }}</p>
+        <p class="product-price">Цена: {{ product.price }}$</p>
+        <p class="product-discount">Скидка: {{ product.discount }}%</p>
+        <p class="product-count">Количество: {{ product.count }} шт.</p>
+        <p class="product-image">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.image.name }}" class="product-img">
+            {% endif %}
+        </p>
+        <p class="product-owner">Владелец: <a href="{% url 'myauth:profile' product.user.id %}" class="owner-link">{{ product.user }}</a></p>
+    </div>
+    <div class="product-actions">
+        {% if request.user == product.user %}
+            <p><a href="{% url 'shop:product_edit' product.pk %}" class="edit-product-link">Редактировать товар</a></p>
+            <p><a href="{% url 'shop:product_delete' product.pk %}" class="delete-product-link">Удалить товар</a></p>
+        {% endif %}
+        <p><a href="{% url 'shop:products' %}" class="back-link">Назад</a></p>
+    </div>
+{% endblock %}

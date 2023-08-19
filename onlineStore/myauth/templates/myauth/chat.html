@@ -1,0 +1,33 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Чат с пользователем {{ user.username }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/chat.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Чат с пользователем {{ user.username }}</h1>
+    <div class="chat-messages">
+        <ul>
+            {% for message in dialog.messages.all %}
+                <li class="message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
+                    <p class="sender-name"><a
+                            href="{% url 'myauth:profile' message.sender.pk %}">{{ message.sender }}</a></p>
+                    <p class="message-content">{{ message.content }}</p>
+                    <p class="message-time">{{ message.created_at|date:'Y-m-d H:i' }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="chat-form">
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="message" class="message-input" placeholder="Введите сообщение">
+            <input type="submit" value="Отправить" class="send-button">
+        </form>
+    </div>
+{% endblock %}

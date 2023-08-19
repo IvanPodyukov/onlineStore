@@ -1,0 +1,32 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Подтверждение покупки
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/buy.css' %}">
+{% endblock %}
+
+
+{% block main %}
+    <h1>
+        Подтверждение покупки
+    </h1>
+    <div class="purchase-confirmation">
+        <h1 class="confirmation-title">Вы уверены, что хотите оформить покупку?</h1>
+        <br>
+        <div class="back-link">
+            <a href="{% url 'shop:cart' %}" class="back-link">Назад</a>
+        </div>
+        <br>
+        <div class="confirmation-form">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="confirm-purchase-btn">Оформить покупку</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

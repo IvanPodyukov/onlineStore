@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Редактирование товара {{ product.name }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/product_edit.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="product-edit">
+        <h1 class="edit-title">Редактирование товара {{ product.name }}</h1>
+        <div class="edit-form">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="save-button">Сохранить</button>
+            </form>
+        </div>
+        <div class="back-link">
+            <p><a href="{% url 'shop:product_details' product.id %}" class="back-link">Назад</a></p>
+        </div>
+    </div>
+{% endblock %}

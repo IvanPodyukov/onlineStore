@@ -1,0 +1,35 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Корзина пользователя {{ user.username }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/cart.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>
+        Корзина пользователя {{ user.username }}
+    </h1>
+    {% if user.cart.all %}
+        <p><a href="{% url 'shop:cart_clear' %}" class="cart-action">Очистить корзину</a></p>
+        <h1 class="page-title">Товары</h1>
+        <ul class="product-list">
+            {% for product in user.cart.all %}
+                <div class="product-item">
+                    <p class="product-name">Название: <a
+                            href="{% url 'shop:product_details' product.pk %}">{{ product.name }}</a></p>
+                    <p class="product-price">Цена: {{ product.price }}$</p>
+                    <p><a href="{% url 'shop:delete_product_from_cart' product.pk %}" class="cart-action">Удалить из
+                        корзины</a></p>
+                </div>
+            {% endfor %}
+        </ul>
+        <p class="total-price">К оплате {{ bill|floatformat:2 }}$</p>
+        <p><a href="{% url 'shop:buy' %}" class="cart-action">Купить</a></p>
+    {% else %}
+        <p class="empty-cart">Корзина пуста!</p>
+    {% endif %}
+{% endblock %}

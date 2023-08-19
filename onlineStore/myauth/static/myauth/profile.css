@@ -1,0 +1,22 @@
+.user-profile {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+}
+
+.profile-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profile-info {
+    margin: 5px 0;
+}
+
+.profile-action {
+    text-decoration: none;
+    color: #00a0b0;
+    font-weight: bold;
+    margin-right: 20px;
+}

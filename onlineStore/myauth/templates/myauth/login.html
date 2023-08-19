@@ -1,0 +1,21 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+    Аутентификация
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/login.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Аутентификация</h1>
+    <div class="authentication-form">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="login-button">Войти</button>
+        </form>
+    </div>
+{% endblock %}

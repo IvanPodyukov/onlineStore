@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/base.css' %}">
+    {% block css %}
+
+    {% endblock %}
+</head>
+<body>
+<header class="site-header"> <!-- Добавлен класс для стилизации -->
+    <nav class="main-nav"> <!-- Добавлен класс для стилизации -->
+        <ul class="nav-list"> <!-- Добавлен класс для стилизации -->
+            {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'myauth:login' %}" class="nav-link">Вход</a></li>
+                <li><a href="{% url 'myauth:register' %}" class="nav-link">Регистрация</a></li>
+            {% endif %}
+            <li><a href="{% url 'shop:products' %}" class="nav-link">Товары</a></li>
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'myauth:profile' request.user.id %}" class="nav-link">Личный кабинет</a></li>
+                <li><a href="{% url 'shop:cart' %}" class="nav-link">Корзина</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+<main class="main-content"> <!-- Добавлен класс для стилизации -->
+    {% block main %}
+
+    {% endblock %}
+</main>
+<footer class="site-footer"> <!-- Добавлен класс для стилизации -->
+    Copyright Fimuje 2023
+</footer>
+</body>
+</html>

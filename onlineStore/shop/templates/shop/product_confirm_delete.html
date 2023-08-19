@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Подтверждение удаления {{ object.name }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/product_confirm_delete.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1 class="confirmation-title">Вы уверены, что хотите удалить товар {{ object.name }}?</h1>
+    <br>
+    <div class="confirmation-back-link">
+        <a href="{% url 'shop:product_details' object.pk %}" class="back-link">Back</a>
+    </div>
+    <br>
+    <div class="confirmation-form">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="confirm-delete-btn">Удалить</button>
+        </form>
+    </div>
+{% endblock %}

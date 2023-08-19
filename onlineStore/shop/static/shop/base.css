@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Стили для хедера */
+.site-header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+.main-nav {
+    text-align: right;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+}
+
+/* Стили для основного контента */
+.main-content {
+    padding: 20px;
+}
+
+/* Стили для футера */
+.site-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

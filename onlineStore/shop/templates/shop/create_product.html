@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Создать товар
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/create_product.css' %}">
+{% endblock %}
+
+{% block main %}
+    <h1>Создать товар</h1>
+    <div class="create-product-form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="create-product-btn">Создать</button>
+        </form>
+    </div>
+    <p><a href="{% url 'shop:products' %}" class="back-link">Назад</a></p>
+{% endblock %}

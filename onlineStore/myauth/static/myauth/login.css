@@ -1,0 +1,28 @@
+.authentication-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.authentication-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button {
+    background-color: #00a0b0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.login-button:hover {
+    background-color: #007c8c;
+}

@@ -1,0 +1,28 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Подтверждение удаления пользователя {{ object.username }}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'myauth/profile_confirm_delete.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="delete-user-confirmation">
+        <h1 class="confirmation-title">Вы уверены, что хотите удалить свой аккаунт?</h1>
+        <br>
+        <div class="back-link">
+            <a href="{% url 'myauth:profile' object.pk %}" class="back-link">Назад</a>
+        </div>
+        <br>
+        <div class="confirmation-form">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="confirm-delete-btn">Удалить</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
